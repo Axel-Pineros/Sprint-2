@@ -13,7 +13,7 @@ CREATE DATABASE optica CHARACTER SET utf8mb4;
 USE optica;
 
 CREATE TABLE Proveidors (
-    id_proveidor INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     nom VARCHAR(50) NOT NULL,
     carrer VARCHAR(50) NOT NULL,
     numero VARCHAR(50) NOT NULL,
@@ -27,59 +27,69 @@ CREATE TABLE Proveidors (
     nif VARCHAR(20) NOT NULL
 );
 
+CREATE TABLE Empleats (
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    nom VARCHAR(50) NOT NULL,
+);
+
 CREATE TABLE Ulleres (
-    id_ulleres INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    id_proveidor INT NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     marca VARCHAR(50) NOT NULL,
     graduacio_vidre VARCHAR(50) NOT NULL,
     tipus_muntura ENUM ('flotant', 'pasta', 'metallica') NOT NULL,
     color_muntura VARCHAR(50) NOT NULL,
     color_vidre VARCHAR(50) NOT NULL,
     preu DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (id_proveidor) REFERENCES Proveidors (id_proveidor)
+    data_venda DATE,
+    id_proveidor INT NOT NULL,
+    id_empleat_venedor INT,
+    FOREIGN KEY (id_proveidor) REFERENCES Proveidors (id),
+    FOREIGN KEY (id_empleat_venedor) REFERENCES Empleats (id)
 );
 
 CREATE TABLE Clients (
-    id_client INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     nom VARCHAR(50) NOT NULL,
-    adreca_postal VARCHAR(100) NOT NULL,
+    carrer VARCHAR(50) NOT NULL,
+    numero VARCHAR(50) NOT NULL,
+    pis VARCHAR(50) NOT NULL,
+    porta VARCHAR(50) NOT NULL,
+    ciutat VARCHAR(50) NOT NULL,
+    codi_postal VARCHAR(50) NOT NULL,
+    pais VARCHAR(50) NOT NULL,
     telefon VARCHAR(20) NOT NULL,
     correu_electronic VARCHAR(50) NOT NULL,
-    data_registre DATE NOT NULL
-);
-
-CREATE TABLE Recomanadors (
-    id_recomanador INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    nom VARCHAR(50) NOT NULL
-);
-
-CREATE TABLE Ventes (
-    id_ulleres INT NOT NULL,
-    id_client INT NOT NULL,
+    data_registre DATE NOT NULL,
     id_recomanador INT,
-    id_empleat INT NOT NULL,
-    data_venda DATE NOT NULL,
-    FOREIGN KEY (id_ulleres) REFERENCES Ulleres (id_ulleres),
-    FOREIGN KEY (id_client) REFERENCES Clients (id_client),
-    FOREIGN KEY (id_recomanador) REFERENCES Recomanadors (id_recomanador)
+    FOREIGN KEY (id_recomanador) REFERENCES Clients (id)
 );
+
+-- CREATE TABLE Ventes (
+--     id_ulleres INT NOT NULL,
+--     id_client INT NOT NULL,
+--     id_empleat INT NOT NULL,
+--     data_venda DATE NOT NULL,
+--     FOREIGN KEY (id_ulleres) REFERENCES Ulleres (id),
+--     FOREIGN KEY (id_client) REFERENCES Clients (id)
+-- );
 
 -- Dades de les taules
 
 INSERT INTO Proveidors (nom, carrer, numero, pis, porta, ciutat, codi_postal, pais, telefon, fax, nif) VALUES
-();
+('Pedro','Plaza del Mesón','156','4','5','Lleida','08798','Espanya'.'618223876','313414515','82842571K');
 
-INSERT INTO Ulleres (id_proveidor, marca, graduacio_vidre, tipus_muntura, color_muntura, color_vidre, preu) VALUES
-();
+INSERT INTO Empleats () VALUES
+('Lidia'),
+('Tobi'),
+('Matias'),
+('José'),
+('Juan');
 
-INSERT INTO Clients (nom, adreca_postal, telefon, correu_electronic, data_registre) VALUES
-();
+INSERT INTO Ulleres (marca, graduacio_vidre, tipus_muntura, color_muntura, color_vidre, preu, data_venda, id_proveidor, id_empleat_venedor) VALUES
+(1,);
 
-INSERT INTO Recomanadors (nom) VALUES
-();
-
-INSERT INTO Ventes (id_ulleres, id_client, id_recomanador, id_empleat, data_venda) VALUES
-();
+INSERT INTO Clients (nom, carrer, numero, pis, porta, ciutat, codi_postal, pais, telefon, correu_electronic, data_registre, id_recomanador) VALUES
+('Maria','');
 
     /*Queries Òptica:
 

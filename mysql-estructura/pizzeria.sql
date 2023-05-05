@@ -28,13 +28,15 @@ CREATE TABLE Clients (
     nom VARCHAR(50) NOT NULL,
     cognom1 VARCHAR(50) NOT NULL,
     cognom2 VARCHAR(50) NOT NULL,
-    adreca VARCHAR(50) NOT NULL,
+    carrer VARCHAR(50) NOT NULL,
+    numero VARCHAR(50) NOT NULL,
+    pis VARCHAR(50) NOT NULL,
+    porta VARCHAR(50) NOT NULL,
     codi_postal VARCHAR(50) NOT NULL,
     localitat VARCHAR(50) NOT NULL,
     provincia VARCHAR(50) NOT NULL,
     telefon VARCHAR(50) NOT NULL
 );
-
 
 CREATE TABLE Categories_pizza (
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -43,7 +45,10 @@ CREATE TABLE Categories_pizza (
 
 CREATE TABLE Botigues (
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    adreca VARCHAR(50) NOT NULL,
+    carrer VARCHAR(50) NOT NULL,
+    numero VARCHAR(50) NOT NULL,
+    pis VARCHAR(50) NOT NULL,
+    porta VARCHAR(50) NOT NULL,
     codi_postal VARCHAR(50) NOT NULL,
     localitat VARCHAR(50) NOT NULL,
     provincia VARCHAR(50) NOT NULL
@@ -57,7 +62,6 @@ CREATE TABLE Empleats (
     nif VARCHAR(50) NOT NULL,
     telefon VARCHAR(50) NOT NULL,
     funcio ENUM ('cuiner', 'repartidor') NOT NULL,
-    data_entrega DATETIME,
     id_botiga INT NOT NULL,
     FOREIGN KEY (id_botiga) REFERENCES Botigues (id)
 );
@@ -112,17 +116,28 @@ CREATE TABLE Pizzes (
 
 -- Dades de les taules
 
-INSERT INTO Clients (nom, cognom1, cognom2, adreca, codi_postal, localitat, provincia, telefon) VALUES
-();
+INSERT INTO Clients (nom, cognom1, cognom2, carrer, numero, pis, porta, codi_postal, localitat, provincia, telefon) VALUES
+('Sandra','Manchon','Torrejon','Libby Street','3052','3','2','90274','Tarragona','Tarragona','635835547'),
+('Paco','Fernandez','Prueba','Valley View Drive','3778','4','5','02141','Badalona','Barcelona','698717627'),
+('Luís','Piedraita','Recio','Lords Way','4946','1','6','38012','Hospitalet de Llobregat','Barcelona','783441473'),
+('Miguel','Hernandez','Sanchis','Werninger Street','2503','2','2','77099','Hospitalet de Llobregat','Barcelona','969060972'),
+('Marta','López','Gallego','Maple Street','4004','3','2','90017','Hospitalet de Llobregat','Barcelona','590600474');
 
 INSERT INTO Categories_pizza (nom) VALUES
-();
+('Carbonara'),
+('Margarita'),
+('Quatre formatges'),
+('Tonyina i bacon');
 
-INSERT INTO Botigues (adreca, codi_postal, localitat, provincia) VALUES
-();
+INSERT INTO Botigues (carrer, numero, pis, porta, codi_postal, localitat, provincia) VALUES
+('Lynch Street','105','1','5','53151','Hospitalet de Llobregat','Barcelona'),
+('Star Trek Drive','2587','3','7','32466','Hospitalet de Llobregat','Barcelona'),
+('Mandan Road','213','2','4','63080','Badalona','Barcelona');
 
-INSERT INTO Empleats (nom, cognom1, cognom2, nif, telefon, funcio, data_entrega, id_botiga) VALUES
-();
+INSERT INTO Empleats (nom, cognom1, cognom2, nif, telefon, funcio, id_botiga) VALUES
+('Matias','Biden','Trump','46287483Y','648267048','cuiner',1),
+('Fontvella','Morel','Park','21972026B','640745048','repartidor',2),
+('John','Locke','Iturralde','73732471Z','590600464','repartidor',3);
 
 INSERT INTO Comandes (data_hora, tipus, numero_pizzes, numero_hamburgueses, numero_begudes, preu, id_client, id_botiga, id_empleat) VALUES
 ();
@@ -131,15 +146,23 @@ INSERT INTO Hamburgueses (nom, descripcio, imatge, preu, id_comanda) VALUES
 ();
 
 INSERT INTO Begudes (nom, descripcio, imatge, preu, id_comanda) VALUES
-();
+('Coca-cola','El refresc ideal per treure la set','coca_cola.jpg',6.80,1),
+('Coca-cola','El refresc ideal per treure la set','coca_cola.jpg',6.80,3),
+('Pepsi','Res millor que una Pepsi per veure','pepsi.jpg',8.25,3),
+('Pepsi','Res millor que una Pepsi per veure','pepsi.jpg',8.25,2),
+('Suc taronja','Vitamina C per un tub','taronja.jpg',5.00,1);
 
 INSERT INTO Pizzes (nom, descripcio, imatge, preu, id_comanda, id_categoria) VALUES
-();
+('Ristorante Carbonara','Una deliciosa pizza de carbonara','pizza_carbonara.jpg',7.45,1,1);
+('Ristorante Margarita','Una deliciosa pizza de margarita','margarita.jpg',9.70,1,2);
+('Dr.Oetker Margarita','Una exquisita pizza de margarita','margarita2.jpg',9.30,1,2);
+('Dr.Oetker quatre formatges','Una exquisita pizza de quatre formatges','quatre-formatges.jpg',6.15,1,3);
 
 -- Queries pizzeria:
 
 --     Llista quants productes de tipus “Begudes”. s'han venut en una determinada localitat.
 
+SELECT COUNT(Comandes.numero_begudes) FROM Comandes JOIN
 
 --     Llista quantes comandes ha efectuat un determinat empleat/da.
 
