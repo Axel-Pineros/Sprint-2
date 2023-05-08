@@ -55,7 +55,7 @@ CREATE TABLE Targetes (
     numero VARCHAR(50) NOT NULL,
     data_caducitat DATE NOT NULL,
     codi_seguretat VARCHAR(50) NOT NULL,
-    id_usuari INT NOT NULL,
+    id_usuari_premium INT NOT NULL,
     FOREIGN KEY (id_usuari_premium) REFERENCES Usuaris_premium (id)
 );
 
@@ -95,7 +95,7 @@ CREATE TABLE Artistes (
 CREATE TABLE Albums (
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     titol VARCHAR(50) NOT NULL,
-    any_publicacio INT(50) NOT NULL,
+    any_publicacio DATE NOT NULL,
     imatge_portada VARCHAR(50) NOT NULL,
     id_artista INT NOT NULL,
     FOREIGN KEY (id_artista) REFERENCES Artistes (id)
@@ -155,12 +155,83 @@ CREATE TABLE Playlists_i_cancons (
 
 -- Dades de les taules
 
-INSERT INTO Usuaris (email, contrasenya, nom, data_naixement, sexe, pais, codi_postal) VALUES ();
+INSERT INTO Usuaris (email, contrasenya, nom, data_naixement, sexe, pais, codi_postal) VALUES
+('pepe56@gmail.com','1234','Pepe','1998-02-23','home','Espanya','67568'),
+('laura67@gmail.com','12345','Laura','2001-06-29','dona','Espanya','32432'),
+('manuel@gmail.com','dadfafa','Manuel','1995-08-01','home','Espanya','27846'),
+('rafael074@gmail.com','ueuicfsd','Rafael','1996-07-12','home','Espanya','32521'),
+('sarasarita@gmail.com','345twew','Sara','1992-05-09','dona','Espanya','47568'),
+('juanjo@gmail.com','sdvgdg','Juanjo','1995-02-04','home','Espanya','53754');
 
-INSERT INTO Usuaris_premium (data_inici, data_renovacio, pagament, id_usuari) VALUES ();
+INSERT INTO Usuaris_premium (data_inici, data_renovacio, pagament, id_usuari) VALUES
+('2021-01-22','2022-04-30','targeta_credit',1),
+('2021-07-16','2022-05-10','paypal',3),
+('2021-03-29','2022-11-15','paypal',4);
 
-INSERT INTO Targetes (numero, data_caducitat, codi_seguretat, id_usuari_premium) VALUES ();
+INSERT INTO Targetes (numero, data_caducitat, codi_seguretat, id_usuari_premium) VALUES
+('4428 7934 3373 5004','2024-02-28','729',1);
 
-INSERT INTO PayPal (nom_paypal, id_usuari_premium) VALUES ();
+INSERT INTO PayPal (nom_paypal, id_usuari_premium) VALUES
+('Manuel',2),
+('Rafael',3);
 
-INSERT INTO Pagaments (data_pagament, numero_ordre, total, id_usuari_premium) VALUES ();
+INSERT INTO Pagaments (data_pagament, numero_ordre, total, id_usuari_premium) VALUES
+('2021-09-28',6,19.00,2);
+
+INSERT INTO Playlists (titol, nombre_cancons, data_creacio, estat, data_eliminacio, id_usuari) VALUES
+('All the love in the world',3,'2021-03-29','activa',NULL,1),
+('To power',1,'2021-07-01','activa',NULL,3);
+
+INSERT INTO Artistes (nom, imatge_artista) VALUES
+('Shakira','shakira.jpg'),
+('Bosé','bose.jpg'),
+('Maluma','maluma.jpg'),
+('Axel Rose','axel-rose.jpg');
+
+INSERT INTO Albums (titol, any_publicacio, imatge_portada, id_artista) VALUES
+('All you need is love','1993','love.jpg',1),
+('Love me baby','1997','love-baby.jpg',3),
+('On fire','2001','fire.jpg',2),
+('The world is for you','2005','world.jpg',4);
+
+INSERT INTO Cancons (titol, durada, numero_reproduccions, id_album) VALUES
+('Oh love',12,45,2),
+('Singing in the rain',8,90,3),
+('Happiness is on the corner',6,240,3),
+('Conquer',8,90,4),
+('Sup',7,120,2);
+
+INSERT INTO Artistes_relacionats (id_artista, id_artista_relacionat) VALUES
+(1,3),
+(1,4),
+(3,1),
+(3,4),
+(4,1),
+(4,3);
+
+INSERT INTO Usuaris_i_artistes (id_usuari, id_artista) VALUES
+(1,1),
+(1,2),
+(3,1),
+(3,3),
+(3,4),
+(5,1),
+(5,2),
+(6,4);
+
+INSERT INTO Usuaris_i_cancons (id_usuari, id_canco) VALUES
+(1,2),
+(1,3),
+(2,5),
+(3,1),
+(3,2),
+(5,4);
+
+INSERT INTO Usuaris_i_albums (id_usuari, id_album) VALUES
+(1,2),
+(1,3),
+(2,4),
+(3,3);
+
+INSERT INTO Playlists_i_cancons (id_playlist, id_canco, id_usuari, data_introduccio) VALUES
+(1,2,3,'2021-09-04');
