@@ -137,10 +137,14 @@ CREATE TABLE Usuaris_videos_valoracions (
 INSERT INTO Usuaris (correu, contrasenya, nom, data_naixement, sexe, pais, codi_postal) VALUES
 ('pepitogrillo@gmail.com', '123pruebaotravez', 'Pepe', '1998-02-21', 'home', 'Espanya', '09632'),
 ('armadillo@gmail.com', 'HolaAMIGOS', 'Luis', '1987-06-10', 'home', 'Espanya', '04587'),
-('colorderosa@gmail.com', 'estoesuninsulto', 'Pepa', '1999-03-30', 'dona', 'Espanya', '52170');
+('colorderosa@gmail.com', 'estoesuninsulto', 'Pepa', '1999-03-30', 'dona', 'Espanya', '52170'),
+('elpepopepote@gmail.com', 'ret53t36t3t3', 'Pepo', '1995-06-12', 'home', 'Espanya', '57357');
 
 INSERT INTO Videos (titol, descripcio, tamany_mb, nom_arxiu, durada, miniatura, reproduccions, likes, dislikes, estat, data_hora_publicacio, id_usuari) VALUES
-('Saltant per la finestra', 'Un tipus molt estúpid surt corrents per la finestra fugint del seu gat', 700, 'Paio estúpid', '00:10:30', 'pobre-tonto.jpg', 2579, 260, 68, 'public', '2023-05-02 11:42:49', 3);
+('Saltant per la finestra', 'Un tipus molt estúpid surt corrents per la finestra fugint del seu gat', 700, 'paio-estupid', '00:10:30', 'pobre-tonto.jpg', 2579, 260, 68, 'public', '2006-05-02 11:42:49', 3),
+('La història de la Terra', "Des dels inicis fins a l'actualitat", 1200, 'historia-terra', '00:37:25', 'planeta-terra.jpg', 5824, 145, 13, 'public', '2005-02-19 18:29:03', 2),
+('Internet, el gran espia', 'Descubreix tota la informació que Internet sap de tu', 450, 'la-veritat', '00:23:57', 'internet.jpg', 2341, 573, 147, 'public', '2005-01-14 23:58:11', 4),
+('Despertant al vei', 'El nostre vei sofrirà una broma pesada', 900, 'vei-espantat', '00:16:38', 'persona-espantada.jpg', 4064, 274, 745, 'public', '2005-01-14 23:58:11', 3);
 
 INSERT INTO Etiquetes (nom) VALUES
 ('Humor'),
@@ -149,26 +153,48 @@ INSERT INTO Etiquetes (nom) VALUES
 ('Bromes pesades');
 
 INSERT INTO Canals (nom, descripcio, data_creacio, id_usuari) VALUES
-('El rei del mambo', 'En aquest canal veureu les idiotades més idiotes que un idiota podia inventar', '2021-0-02', 2);
+('El rei del mambo', 'En aquest canal veureu les idiotades més idiotes que un idiota podia inventar', '2010-04-02', 1),
+('Yoloman', 'El millor canal del món', '2011-06-19', 3),
+('Superman', 'El canal dels canals', '2011-06-19', 4);
 
 INSERT INTO Playlists (nom, data_creacio, estat, id_usuari) VALUES
-('Caigudes tontes', '1990-09-02', 'privada', 3);
+('Caigudes tontes', '2008-09-02', 'privada', 3),
+('Burros','2009-11-28','publica',3),
+('Ovnis','2010-02-13','publica',4);
 
 INSERT INTO Comentaris (contingut, data_creacio, id_usuari, id_video) VALUES
-('Jajjajajaja que bo xdddddd', '2008-10-13 19:23:41', 1, 3);
+('Jajjajajaja que bo xdddddd', '2008-10-13 19:23:41', 1, 3),
+('Que interessant', '2008-10-13 12:57:27', 1, 4),
+('Ostres com mola', '2009-12-28 09:15:13', 2, 1),
+('No és per a tant...', '2008-04-12 23:01:34', 3, 2);
 
 INSERT INTO Usuaris_i_comentaris (id_usuari, id_comentari, valoracio, data_valoracio) VALUES
-(2,1, 'like', '2008-10-13 19:23:41');
+(1,4, 'dislike', '2008-12-01 13:46:59'),
+(2,1, 'like', '2008-10-13 19:23:41'),
+(3,3, 'like', '2010-04-23 10:21:24');
 
 INSERT INTO Videos_i_etiquetes (id_video, id_etiqueta) VALUES
 (1,1),
-(1,4);
+(1,4),
+(2,2),
+(3,3),
+(4,1),
+(4,4);
 
 INSERT INTO Playlists_i_videos (id_playlist, id_video) VALUES
-(1,1);
+(1,1),
+(1,4),
+(2,1),
+(2,4),
+(3,2),
+(3,3);
 
 INSERT INTO Canals_usuaris_suscriptors (id_canal, id_usuari) VALUES
-();
+(1,2),
+(1,4),
+(2,2),
+(3,3);
 
 INSERT INTO Usuaris_videos_valoracions (id_video, id_usuari, valoracio, data_valoracio) VALUES
-();
+(1,2,'like','2012-06-24 11:09:41'),
+(3,3,'like','2012-08-03 03:46:12');
