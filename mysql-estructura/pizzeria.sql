@@ -157,7 +157,7 @@ INSERT INTO Begudes (nom, descripcio, imatge, preu, id_comanda) VALUES
 
 INSERT INTO Pizzes (nom, descripcio, imatge, preu, id_comanda, id_categoria) VALUES
 ('Ristorante Carbonara','Una deliciosa pizza de carbonara','pizza_carbonara.jpg',7.45,2,1),
-('Ristorante Margarita','Una deliciosa pizza de margarita','margarita.jpg',9.70,3,3),
+('Ristorante Margarita','Una deliciosa pizza de margarita','margarita.jpg',9.70,3,2),
 ('Dr.Oetker Margarita','Una exquisita pizza de margarita','margarita2.jpg',9.30,2,2),
 ('Dr.Oetker quatre formatges','Una exquisita pizza de quatre formatges','quatre-formatges.jpg',6.15,1,3);
 

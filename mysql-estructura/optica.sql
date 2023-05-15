@@ -97,7 +97,7 @@ INSERT INTO Clients (nom, carrer, numero, pis, porta, ciutat, codi_postal, pais,
 ('Maria','Teresa Mercado','37','2','8','Barcelona','75745','Espanya','748413247','mariadb@gmail.com','2020-05-16',NULL),
 ('Carlos','Olvera Vía','146','3','5','Barcelona','35142','Espanya','969060981','carleto099@gmail.com','2020-08-24',NULL),
 ('Josep','Soledad Ronda','123','1','4','Barcelona','46705','Espanya','590600720','joselito@gmail.com','2020-09-13',1),
-('Paco','Véliz Barranco','89','2','5','Barcelona','37306','Espanya','678548013 ','pacolo@gmail.com','2020-07-02',3);
+('Paco','Véliz Barranco','89','2','5','Barcelona','37306','Espanya','678548013','pacolo@gmail.com','2020-07-02',3);
 
 INSERT INTO Ventes (id_ulleres, id_client, id_empleat, data_venda) VALUES
 (1,2,3,'2021-09-04'),
